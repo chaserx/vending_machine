@@ -1,0 +1,11 @@
+---
+:a1:
+  :name: kitkat
+  :price: 99
+  :location: a1
+  :quantity: 42
+:a2:
+  :name: snickers
+  :price: 99
+  :location: a2
+  :quantity: 42
