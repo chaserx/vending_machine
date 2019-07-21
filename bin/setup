@@ -1,0 +1,39 @@
+#!/usr/bin/env ruby
+require 'fileutils'
+include FileUtils
+require_relative "../lib/inventory"
+
+APP_ROOT = File.expand_path('..', __dir__)
+
+def system!(*args)
+  system(*args) || abort("\n== Command #{args} failed ==")
+end
+
+items = [{name: "kitkat", price: 100, location: "b1", quantity: 12},
+         {name: "snickers", price: 100, location: "b2", quantity: 12},
+         {name: "resse\'s", price: 100, location: "b3", quantity: 12},
+         {name: "hershey bar", price: 100, location: "b4", quantity: 12},
+         {name: "resse\'s sticks", price: 100, location: "b5", quantity: 12},
+         {name: "milky way", price: 100, location: "b6", quantity: 12},
+         {name: "butterfinger", price: 100, location: "b7", quantity: 12},
+         {name: "almond joy", price: 100, location: "b8", quantity: 12},
+         {name: "m&m\'s", price: 100, location: "c1", quantity: 12},
+         {name: "peanut m&m\'s", price: 100, location: "c2", quantity: 12},
+         {name: "crispy m&m\'s", price: 100, location: "c3", quantity: 12},
+         {name: "peanut butter m&m\'s", price: 100, location: "c4", quantity: 12},
+         {name: "pretzel m&m\'s", price: 100, location: "c5", quantity: 12},
+         {name: "almond m&m\'s", price: 100, location: "c6", quantity: 12},
+         {name: "caramel m&m\'s", price: 100, location: "c7", quantity: 12},
+         {name: "mini m&m\'s", price: 100, location: "c8", quantity: 12}]
+
+chdir APP_ROOT  do
+  puts '== Installing dependencies =='
+  system! 'gem install bundler --conservative'
+  system('bundle check') || system!('bundle install')
+  # add something here to bootstrap the inventory pstore
+  puts '== Adding items to inventory =='
+  items.each do |item|
+    Inventory.add(item)
+  end
+end
+

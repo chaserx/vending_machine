@@ -23,13 +23,21 @@ class Inventory
   end
 
   def self.find_by_location(location)
-    self.class.all.select{ |item| item[:location] == location }
+    self.all.select{ |item| item[:location] == location }
   end
 
   def self.remove(item)
     store = YAML::Store.new("data.yml")
     store.transaction do
       store.delete(item[:location].to_sym)
+      store.commit
+    end
+  end
+
+  def self.subtract(location, amount)
+    store = YAML::Store.new("data.yml")
+    store.transaction do
+      store[location.to_sym][:quantity] -= amount
       store.commit
     end
   end
