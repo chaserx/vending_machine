@@ -35,8 +35,8 @@ class VendingMachine
     puts "Please Make Your Selection"
   end
 
-  def process_selection(selection)
-    Inventory.remove(selection)
+  def process_selection(selection, amount=1)
+    Inventory.subtract(selection, amount)
   end
 
   def validate_selection(selection)
