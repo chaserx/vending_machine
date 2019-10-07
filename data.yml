@@ -3,14 +3,14 @@
   :name: kitkat
   :price: 100
   :location: b1
-  :quantity: 12
+  :quantity: 10
 :b2:
   :name: snickers
   :price: 100
   :location: b2
   :quantity: 12
 :b3:
-  :name: resse's
+  :name: resse's cups
   :price: 100
   :location: b3
   :quantity: 12
@@ -43,7 +43,7 @@
   :name: m&m's
   :price: 100
   :location: c1
-  :quantity: 12
+  :quantity: 10
 :c2:
   :name: peanut m&m's
   :price: 100
