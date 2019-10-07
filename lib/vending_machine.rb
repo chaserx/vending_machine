@@ -57,7 +57,7 @@ class VendingMachine
 
   def validate_selection(selection)
     # matches a location name like `b1`
-    Inventory.all.map{|item| item.location}.any?{|location| location == selection}
+    Inventory.all.any?{|item| item.location.to_s == selection}
     # possible:
     # there is available inventory for the selection
     # eventually, compare the amount of money provided with the cost of selection
