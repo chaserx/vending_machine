@@ -39,7 +39,7 @@ class VendingMachine
   end
 
   def prompt_user
-    puts "Please Make Your Selection:"
+    puts 'Please Make Your Selection:'
   end
 
   def poor_selection(selection)
