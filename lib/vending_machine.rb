@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 # vending machine stats
 # ~6 rows
 # 4 or 8 columns per row. top 3 rows have 4 for chips size; next rows have 8 for candies
 
-require_relative "inventory"
-require "tabulo"
+require_relative 'inventory'
+require 'tabulo'
 
 class VendingMachine
   attr_accessor :state
 
   def initialize
-    @state = "Not Ready" # ['Not Ready', 'Ready', 'Fault', 'Vending']
+    @state = 'Not Ready' # ['Not Ready', 'Ready', 'Fault', 'Vending']
   end
 
   def on
@@ -24,10 +26,10 @@ class VendingMachine
   end
 
   def run
-    @state = "Ready"
-    input = ""
+    @state = 'Ready'
+    input = ''
     list_selections
-    until input == 'x' do
+    until input == 'x'
       prompt_user
       input = gets.chomp.downcase
       if validate_selection(input)
@@ -50,21 +52,21 @@ class VendingMachine
     puts "You chose #{selection}. Nice choice. One moment."
   end
 
-  def process_selection(selection, amount=1)
+  def process_selection(selection, amount = 1)
     parrot_selection(selection)
     Inventory.subtract(selection, amount)
   end
 
   def validate_selection(selection)
     # matches a location name like `b1`
-    Inventory.all.any?{|item| item.location.to_s == selection}
+    Inventory.all.any? { |item| item.location.to_s == selection }
     # possible:
     # there is available inventory for the selection
     # eventually, compare the amount of money provided with the cost of selection
   end
 
   def list_selections
-    max_width = Inventory.all.map{|item| item.name.length}.max
+    max_width = Inventory.all.map { |item| item.name.length }.max
     table = Tabulo::Table.new(Inventory.all) do |t|
       t.add_column(:location)
       t.add_column(:name, width: max_width)
@@ -74,4 +76,3 @@ class VendingMachine
     puts table
   end
 end
-

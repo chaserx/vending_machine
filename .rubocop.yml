@@ -1,0 +1,22 @@
+AllCops:
+  Exclude:
+    - 'bin/setup'
+    - 'bin/vending_machine'
+    - 'spec/spec_helper.rb'
+    - 'Gemfile'
+    - 'Gemfile.lock'
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/MethodLength:
+  Max: 20
+
+Metrics/ClassLength:
+  Max: 1500
+
+Layout/SpaceInsideBlockBraces:
+  SpaceBeforeBlockParameters: true
+
+Style/Documentation:
+  Enabled: false
