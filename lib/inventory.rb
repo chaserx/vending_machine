@@ -1,11 +1,13 @@
-require "pstore"
-require "yaml/store"
+# frozen_string_literal: true
+
+require 'pstore'
+require 'yaml/store'
 require 'ostruct'
 
 class Inventory
   def self.all
-    store = YAML::Store.new("data.yml")
-    store.transaction(true) do  # begin read-only transaction
+    store = YAML::Store.new('data.yml')
+    store.transaction(true) do # begin read-only transaction
       items = []
       store.roots.each do |data_root_name|
         items.push OpenStruct.new(store[data_root_name])
@@ -15,7 +17,7 @@ class Inventory
   end
 
   def self.add(item)
-    store = YAML::Store.new("data.yml")
+    store = YAML::Store.new('data.yml')
     store.transaction do
       store[item[:location].to_sym] = item
       store.commit
@@ -23,11 +25,11 @@ class Inventory
   end
 
   def self.find_by_location(location)
-    self.all.select{ |item| item[:location] == location }
+    all.select { |item| item[:location] == location }
   end
 
   def self.remove(item)
-    store = YAML::Store.new("data.yml")
+    store = YAML::Store.new('data.yml')
     store.transaction do
       store.delete(item[:location].to_sym)
       store.commit
@@ -35,7 +37,7 @@ class Inventory
   end
 
   def self.subtract(location, amount)
-    store = YAML::Store.new("data.yml")
+    store = YAML::Store.new('data.yml')
     store.transaction do
       store[location.to_sym][:quantity] -= amount
       store.commit
@@ -43,19 +45,19 @@ class Inventory
   end
 
   def self.update(item)
-    store = YAML::Store.new("data.yml")
+    store = YAML::Store.new('data.yml')
     store.transaction do
       if store[item[:location]]
         store[item[:location].to_sym] = item
         store.commit
       else
         store.abort
-        puts "Item not found"
+        puts 'Item not found'
       end
     end
   end
 
   def self.available?(location)
-    Inventory.all.select { |item| item[:location] == location }.first.fetch(:quantity) > 0
+    Inventory.all.select { |item| item[:location] == location }.first.fetch(:quantity).positive?
   end
 end

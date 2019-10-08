@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
-RSpec.describe 'First Run', :type => :aruba do
+RSpec.describe 'First Run', type: :aruba do
   let(:file) { 'file.txt' }
   let(:content) { 'Hello, Aruba!' }
 
