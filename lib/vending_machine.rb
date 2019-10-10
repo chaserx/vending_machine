@@ -40,6 +40,8 @@ class VendingMachine
     end
   end
 
+  private
+
   def prompt_user
     puts 'Please Make Your Selection:'
   end
