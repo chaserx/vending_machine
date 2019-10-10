@@ -58,6 +58,6 @@ class Inventory
   end
 
   def self.available?(location)
-    Inventory.all.select { |item| item[:location] == location }.first.fetch(:quantity).positive?
+    all.select { |item| item[:location] == location }.first.fetch(:quantity).positive?
   end
 end
