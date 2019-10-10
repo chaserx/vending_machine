@@ -66,10 +66,11 @@ class VendingMachine
   end
 
   def list_selections
-    max_width = Inventory.all.map { |item| item.name.length }.max
-    table = Tabulo::Table.new(Inventory.all) do |t|
+    all_items = Inventory.all
+    longest_name = all_items.map { |item| item.name.length }.max
+    table = Tabulo::Table.new(all_items) do |t|
       t.add_column(:location)
-      t.add_column(:name, width: max_width)
+      t.add_column(:name, width: longest_name)
       t.add_column(:price)
       t.add_column(:quantity)
     end
