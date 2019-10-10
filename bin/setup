@@ -11,7 +11,7 @@ end
 
 items = [{name: "kitkat", price: 100, location: "b1", quantity: 12},
          {name: "snickers", price: 100, location: "b2", quantity: 12},
-         {name: "resse\'s", price: 100, location: "b3", quantity: 12},
+         {name: "resse\'s cups", price: 100, location: "b3", quantity: 12},
          {name: "hershey bar", price: 100, location: "b4", quantity: 12},
          {name: "resse\'s sticks", price: 100, location: "b5", quantity: 12},
          {name: "milky way", price: 100, location: "b6", quantity: 12},
@@ -30,10 +30,12 @@ chdir APP_ROOT  do
   puts '== Installing dependencies =='
   system! 'gem install bundler --conservative'
   system('bundle check') || system!('bundle install')
+  FileUtils.rm('data.yml', force: true)
   # add something here to bootstrap the inventory pstore
   puts '== Adding items to inventory =='
   items.each do |item|
     Inventory.add(item)
   end
+  puts '== data.yml written with default items'
 end
 
