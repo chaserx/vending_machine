@@ -19,12 +19,6 @@ class VendingMachine
     run
   end
 
-  def system_check
-    true
-    # this could be something like successfully pulling inventory data, minimum amount in the till, etc
-    # could throw to a different state if not successful
-  end
-
   def run
     @state = 'Ready'
     input = ''
@@ -32,7 +26,7 @@ class VendingMachine
     until input == 'x'
       prompt_user
       input = gets.chomp.downcase
-      if validate_selection(input)
+      if valid_selection(input)
         process_selection(input)
       else
         poor_selection(input)
@@ -41,6 +35,12 @@ class VendingMachine
   end
 
   private
+
+  def system_check
+    true
+    # this could be something like successfully pulling inventory data, minimum amount in the till, etc
+    # could throw to a different state if not successful
+  end
 
   def prompt_user
     puts 'Please Make Your Selection:'
@@ -59,7 +59,7 @@ class VendingMachine
     Inventory.subtract(selection, amount)
   end
 
-  def validate_selection(selection)
+  def valid_selection(selection)
     # matches a location name like `b1`
     Inventory.all.any? { |item| item.location.to_s == selection }
     # possible:
