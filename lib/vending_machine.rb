@@ -32,9 +32,16 @@ class VendingMachine
         poor_selection(input)
       end
     end
+  rescue Interrupt
+    shut_down
+    exit
   end
 
   private
+
+  def shut_down
+    puts "\nThanks for vending. Bye! 👋"
+  end
 
   def system_check
     @state = :ready
