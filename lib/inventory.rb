@@ -5,8 +5,10 @@ require 'yaml/store'
 require 'ostruct'
 
 class Inventory
+  STOREFILE = 'data.yml'
+
   def self.all
-    store = YAML::Store.new('data.yml')
+    store = YAML::Store.new(STOREFILE)
     store.transaction(true) do # begin read-only transaction
       items = []
       store.roots.each do |data_root_name|
@@ -17,7 +19,7 @@ class Inventory
   end
 
   def self.add(item)
-    store = YAML::Store.new('data.yml')
+    store = YAML::Store.new(STOREFILE)
     store.transaction do
       store[item[:location].to_sym] = item
       store.commit
@@ -29,7 +31,7 @@ class Inventory
   end
 
   def self.remove(item)
-    store = YAML::Store.new('data.yml')
+    store = YAML::Store.new(STOREFILE)
     store.transaction do
       store.delete(item[:location].to_sym)
       store.commit
@@ -37,7 +39,7 @@ class Inventory
   end
 
   def self.subtract(location, amount)
-    store = YAML::Store.new('data.yml')
+    store = YAML::Store.new(STOREFILE)
     store.transaction do
       store[location.to_sym][:quantity] -= amount
       store.commit
@@ -45,7 +47,7 @@ class Inventory
   end
 
   def self.update(item)
-    store = YAML::Store.new('data.yml')
+    store = YAML::Store.new(STOREFILE)
     store.transaction do
       if store[item[:location]]
         store[item[:location].to_sym] = item
