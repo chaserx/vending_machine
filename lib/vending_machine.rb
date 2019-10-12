@@ -22,7 +22,7 @@ class VendingMachine
   def run
     input = ''
     list_selections
-    while @state == :ready
+    while system_ready
       prompt_user
       input = gets.chomp.downcase
       if valid_selection(input)
@@ -37,6 +37,10 @@ class VendingMachine
   end
 
   private
+
+  def system_ready
+    @state == :ready
+  end
 
   def shut_down
     puts "\nThanks for vending. Bye! 👋"
