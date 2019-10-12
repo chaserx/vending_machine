@@ -19,6 +19,13 @@ class Inventory
     end
   end
 
+  def self.any?
+    store = YAML::Store.new(STOREFILE)
+    store.transaction(true) do
+      store.roots.any?
+    end
+  end
+
   def self.add(item)
     store = YAML::Store.new(STOREFILE)
     store.transaction do
