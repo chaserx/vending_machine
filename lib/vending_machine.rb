@@ -11,7 +11,7 @@ class VendingMachine
   attr_accessor :state
 
   def initialize
-    @state = 'Not Ready' # ['Not Ready', 'Ready', 'Fault', 'Vending']
+    @state = :not_ready # [:not_ready, :ready, :fault, :vending]
   end
 
   def on
@@ -23,7 +23,7 @@ class VendingMachine
     @state = 'Ready'
     input = ''
     list_selections
-    until input == 'x'
+    while @state == :ready
       prompt_user
       input = gets.chomp.downcase
       if valid_selection(input)
@@ -37,7 +37,7 @@ class VendingMachine
   private
 
   def system_check
-    true
+    @state = :ready
     # this could be something like successfully pulling inventory data, minimum amount in the till, etc
     # could throw to a different state if not successful
   end
