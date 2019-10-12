@@ -64,6 +64,7 @@ class VendingMachine
   def process_selection(selection, amount = 1)
     parrot_selection(selection)
     Inventory.subtract(selection, amount)
+    puts "\nEnjoy your #{Inventory.find_by_location(selection).first.name} 🍫\n\n"
   end
 
   def valid_selection(selection)
