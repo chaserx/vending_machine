@@ -3,9 +3,10 @@
 require 'pstore'
 require 'yaml/store'
 require 'ostruct'
+require 'dotenv/load'
 
 class Inventory
-  STOREFILE = 'data.yml'
+  STOREFILE = ENV.fetch('STOREFILE', 'data.yml')
 
   def self.all
     store = YAML::Store.new(STOREFILE)
