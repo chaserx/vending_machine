@@ -20,7 +20,6 @@ class VendingMachine
   end
 
   def run
-    @state = 'Ready'
     input = ''
     list_selections
     while @state == :ready
@@ -54,11 +53,11 @@ class VendingMachine
   end
 
   def poor_selection(selection)
-    puts "Um. Your selection of #{selection} appears to be invalid."
+    puts "\nUm. Your selection of #{selection} appears to be invalid.\n\n"
   end
 
   def parrot_selection(selection)
-    puts "You chose #{selection}. Nice choice. One moment."
+    puts "\nYou chose #{Inventory.find_by_location(selection).first.name}. Nice choice. One moment."
   end
 
   def process_selection(selection, amount = 1)
