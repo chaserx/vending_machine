@@ -16,6 +16,7 @@ class Inventory
     store.transaction(true) do # begin read-only transaction
       items = []
       store.roots.each do |data_root_name|
+        # NOTE(chaserx): could maybe walk down a path with an item class instead of this, maybe.
         items.push OpenStruct.new(store[data_root_name])
       end
       items
