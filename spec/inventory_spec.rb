@@ -63,7 +63,9 @@ RSpec.describe Inventory do
     it 'updates the quanity of an item by 1' do
       @inventory = Inventory.new(storefile: File.expand_path('spec/support/test-data.yml'))
       allow(Inventory).to receive(:new).and_return(@inventory)
-      expect{described_class.subtract('b1', 1)}.to change{described_class.find_by_location('b1').first.quantity}
+      # rubocop:disable Lint/AmbiguousBlockAssociation
+      expect { described_class.subtract('b1', 1) }.to change { described_class.find_by_location('b1').first.quantity }
+      # rubocop:enable Lint/AmbiguousBlockAssociation
     end
   end
 end
