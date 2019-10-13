@@ -9,3 +9,4 @@ gem "reek", require: false
 gem "dotenv"
 gem "simplecov", require: false
 gem "solargraph", require: false # VS Code was complaining about this
+gem "awesome_print", require: false
