@@ -22,7 +22,7 @@ class VendingMachine
   def run
     input = ''
     list_selections
-    while system_ready
+    while system_ready?
       prompt_user
       input = gets.chomp.downcase
       if valid_selection(input)
@@ -38,8 +38,12 @@ class VendingMachine
 
   private
 
-  def system_ready
+  def system_ready?
     @state == :ready
+  end
+
+  def system_ready!
+    @state = :ready
   end
 
   def shut_down
@@ -47,7 +51,7 @@ class VendingMachine
   end
 
   def system_check
-    @state = :ready
+    system_ready!
     # this could be something like successfully pulling inventory data, minimum amount in the till, etc
     # could throw to a different state if not successful
   end
