@@ -2,7 +2,7 @@ require_relative '../lib/inventory'
 
 RSpec.describe Inventory do
   describe 'any?' do
-    context 'with complete STOREFILE' do
+    context 'with complete storefile' do
       it 'returns true' do
         @inventory = Inventory.new(storefile: File.expand_path('spec/support/test-data.yml'))
         allow(Inventory).to receive(:new).and_return(@inventory)
@@ -10,7 +10,7 @@ RSpec.describe Inventory do
       end
     end
 
-    context 'with empty STOREFILE' do
+    context 'with empty storefile' do
       it 'returns false' do
         @inventory = Inventory.new(storefile: File.expand_path('spec/support/bad-data.yml'))
         allow(Inventory).to receive(:new).and_return(@inventory)
