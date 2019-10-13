@@ -1,7 +1,5 @@
 # Vending Machine
 
-2019-07-21
-
 A command line vending machine
 
 ## Motivation
