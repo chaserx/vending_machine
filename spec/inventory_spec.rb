@@ -72,7 +72,7 @@ RSpec.describe Inventory do
   describe 'update' do
     it 'updates entries from a hash' do
       pending 'unfinished'
-      fail
+      raise
     end
   end
 
@@ -86,7 +86,7 @@ RSpec.describe Inventory do
   describe 'remove' do
     it 'removes an entry' do
       pending 'unfinished'
-      fail
+      raise
     end
   end
 end
