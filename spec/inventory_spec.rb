@@ -68,4 +68,25 @@ RSpec.describe Inventory do
       # rubocop:enable Lint/AmbiguousBlockAssociation
     end
   end
+
+  describe 'update' do
+    it 'updates entries from a hash' do
+      pending 'unfinished'
+      fail
+    end
+  end
+
+  describe 'add' do
+    it 'adds a new entry' do
+      pending 'unfinished'
+      raise
+    end
+  end
+
+  describe 'remove' do
+    it 'removes an entry' do
+      pending 'unfinished'
+      fail
+    end
+  end
 end
