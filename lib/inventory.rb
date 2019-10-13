@@ -3,7 +3,6 @@
 require 'pstore'
 require 'yaml/store'
 require 'ostruct'
-require 'dotenv/load'
 
 class Inventory
   attr_reader :store
