@@ -1,0 +1,81 @@
+---
+:b1:
+  :name: kitkat
+  :price: 100
+  :location: b1
+  :quantity: 2
+:b2:
+  :name: snickers
+  :price: 100
+  :location: b2
+  :quantity: 12
+:b3:
+  :name: resse's cups
+  :price: 100
+  :location: b3
+  :quantity: 12
+:b4:
+  :name: hershey bar
+  :price: 100
+  :location: b4
+  :quantity: 12
+:b5:
+  :name: resse's sticks
+  :price: 100
+  :location: b5
+  :quantity: 12
+:b6:
+  :name: milky way
+  :price: 100
+  :location: b6
+  :quantity: 12
+:b7:
+  :name: butterfinger
+  :price: 100
+  :location: b7
+  :quantity: 12
+:b8:
+  :name: almond joy
+  :price: 100
+  :location: b8
+  :quantity: 12
+:c1:
+  :name: m&m's
+  :price: 100
+  :location: c1
+  :quantity: 12
+:c2:
+  :name: peanut m&m's
+  :price: 100
+  :location: c2
+  :quantity: 12
+:c3:
+  :name: crispy m&m's
+  :price: 100
+  :location: c3
+  :quantity: 12
+:c4:
+  :name: peanut butter m&m's
+  :price: 100
+  :location: c4
+  :quantity: 12
+:c5:
+  :name: pretzel m&m's
+  :price: 100
+  :location: c5
+  :quantity: 12
+:c6:
+  :name: almond m&m's
+  :price: 100
+  :location: c6
+  :quantity: 12
+:c7:
+  :name: caramel m&m's
+  :price: 100
+  :location: c7
+  :quantity: 12
+:c8:
+  :name: mini m&m's
+  :price: 100
+  :location: c8
+  :quantity: 0

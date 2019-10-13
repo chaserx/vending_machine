@@ -106,4 +106,11 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+  config.before(:suite) do
+    FileUtils.cp(File.expand_path('spec/support/test-data.yml.bak'), File.expand_path('spec/support/test-data.yml'))
+  end
+
+  config.after(:suite) do
+    FileUtils.cp(File.expand_path('spec/support/test-data.yml.bak'), File.expand_path('spec/support/test-data.yml'))
+  end
 end
