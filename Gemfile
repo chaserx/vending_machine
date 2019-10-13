@@ -8,3 +8,4 @@ gem "rubocop", require: false
 gem "reek", require: false
 gem "dotenv"
 gem "simplecov", require: false
+gem "solargraph", require: false # VS Code was complaining about this
