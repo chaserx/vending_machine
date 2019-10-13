@@ -60,15 +60,16 @@ class Inventory
 
   def self.update(item)
     store = new.store
-    store.transaction do
-      if store[item[:location]]
-        store[item[:location].to_sym] = item
-        store.commit
-      else
-        store.abort
-        puts 'Item not found'
-      end
+    store.transaction(true) do
+      return [] if store.roots.none? { |root| root == item[:location].to_sym }
     end
+
+    store.transaction do
+      store[item[:location].to_sym] = item
+      store.commit
+    end
+
+    find_by_location(item[:location]).first
   end
 
   def self.available?(location)
