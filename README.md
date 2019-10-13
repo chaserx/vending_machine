@@ -14,7 +14,7 @@ For your convenience, there's a `bin/setup` script that will install dependencie
 
 ## Testing
 
-Run `bundle exec rspec` to run tests.
+Run `bundle exec rspec` to run tests. Coverage information will be collected in the `coverage` directory.
 
 Run `bundle exec rubocop` to lint.
 

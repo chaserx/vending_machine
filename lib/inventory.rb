@@ -22,6 +22,7 @@ class Inventory
     end
   end
 
+  # TODO(chaserx): might be nice to have this accept an optional block
   def self.any?
     store = new.store
     store.transaction(true) do
