@@ -7,3 +7,4 @@ gem "irb", require: false
 gem "rubocop", require: false
 gem "reek", require: false
 gem "dotenv"
+gem "simplecov", require: false
